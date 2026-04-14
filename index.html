@@ -106,15 +106,12 @@ nav a:hover { color: var(--terra); }
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   gap: 0.6rem; position: relative; overflow: hidden;
-  cursor: pointer; transition: border-color 0.3s;
 }
-.cover-photo:hover { border-color: var(--terra-light); }
+
 .cover-photo input[type="file"] {
   position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
 }
-.cover-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: none; }
-.photo-hint { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(107,74,54,0.5); }
-.photo-icon { font-size: 2rem; opacity: 0.25; color: var(--umber); line-height: 1; }
+.cover-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 .eyebrow {
   font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
@@ -409,10 +406,7 @@ footer {
 
   <div class="hero-inner">
     <div class="cover-photo" id="coverPhoto">
-      <input type="file" accept="image/*" onchange="loadPhoto(event)">
-      <img id="coverImg" alt="Cover photo">
-      <div class="photo-icon">⬚</div>
-      <div class="photo-hint">Click to add your cover photo</div>
+      <img id="coverImg" src="Chris_Karen (cover).png" alt="Chris & Karen">
     </div>
 
     <p class="eyebrow">Together with their families, request the pleasure of your company</p>
@@ -637,20 +631,6 @@ footer {
 </footer>
 
 <script>
-// Cover photo
-function loadPhoto(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const img = document.getElementById('coverImg');
-    img.src = ev.target.result;
-    img.style.display = 'block';
-    document.querySelector('.photo-hint').style.display = 'none';
-    document.querySelector('.photo-icon').style.display = 'none';
-  };
-  reader.readAsDataURL(file);
-}
 
 // Toggle guest rows
 function toggleGuestRows() {
